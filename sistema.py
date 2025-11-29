@@ -1,7 +1,3 @@
-from taxi import Taxi
-from cliente import Cliente
-import threading
-import time
 import math
 
 class Sistema:

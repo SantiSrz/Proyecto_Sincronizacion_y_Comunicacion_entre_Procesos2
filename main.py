@@ -11,13 +11,13 @@ if __name__ == "__main__":
     taxi2 = Taxi("02", "3876 JUY", 1000, 1000)
     taxi3 = Taxi("03", "2986 TRQ", 5000, 5000)
     
-    Sistema.registrar_taxi(taxi1)
-    Sistema.registrar_taxi(taxi2)
-    Sistema.registrar_taxi(taxi3)
+    empresa.registrar_taxi(taxi1)
+    empresa.registrar_taxi(taxi2)
+    empresa.registrar_taxi(taxi3)
     
     cliente1 = Cliente("Santiago", 500, 700, 200, 400)
     
-    Sistema.registrar_cliente(cliente1)
+    empresa.registrar_cliente(cliente1)
     
-    Sistema.asignar_taxi(cliente1)
-    print(Sistema.asignar_taxi(cliente1))
+    taxi_ganador = empresa.asignar_taxi(cliente1)
+    print(taxi_ganador)

@@ -1,8 +1,3 @@
-import threading
-import time
-import math
-from cliente import Cliente
-
 class Taxi:
     
     def __init__(self, id, matricula, x, y):
