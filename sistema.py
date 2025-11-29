@@ -21,11 +21,11 @@ class Sistema:
         
         for t in self.taxis:
             distancia_actual = self.calcular_distancia(t.x, t.y, cliente.x_origen, cliente.y_origen)
-            if distancia_actual < mejor_distancia:
+            if (distancia_actual < mejor_distancia) and (t.ocupado == False):
                 taxi_mas_cercano = t  
                 
         if taxi_mas_cercano is not None:
             taxi_mas_cercano.ocupado = True
-            print(f"SISTEMA: Orden enviada al {taxi_mas_cercano.id}. ¡Ahora está ocupado!")        
+            print(f"EL taxi: {taxi_mas_cercano.id} esta ocupado")        
             
             return taxi_mas_cercano
