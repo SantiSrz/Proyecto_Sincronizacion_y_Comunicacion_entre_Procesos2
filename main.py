@@ -17,7 +17,7 @@ if __name__ == "__main__":
     
     cliente1 = Cliente("Santiago", 500, 700, 200, 400)
     
-    empresa.registrar_cliente(cliente1)
+    empresa.registrar_clientes(cliente1)
     
     taxi_ganador = empresa.asignar_taxi(cliente1)
     print(taxi_ganador)
