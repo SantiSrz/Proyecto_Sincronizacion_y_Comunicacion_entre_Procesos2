@@ -23,9 +23,13 @@ class Sistema:
             distancia_actual = self.calcular_distancia(t.x, t.y, cliente.x_origen, cliente.y_origen)
             if (distancia_actual < mejor_distancia) and (t.ocupado == False):
                 taxi_mas_cercano = t  
+                mejor_distancia = distancia_actual
                 
         if taxi_mas_cercano is not None:
-            taxi_mas_cercano.ocupado = True
-            print(f"EL taxi: {taxi_mas_cercano.id} esta ocupado")        
+            if taxi_mas_cercano.intentar_ocupar() == True:
+                print(f"EL taxi: {taxi_mas_cercano.id} esta ocupado")        
+                return taxi_mas_cercano
+            else:
+                print("Te acaban de quitar el taxi, ahora mismo te asignaremos otro")
+                return None
             
-            return taxi_mas_cercano

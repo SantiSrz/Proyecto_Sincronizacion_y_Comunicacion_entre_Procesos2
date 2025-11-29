@@ -10,10 +10,10 @@ class Taxi(threading.Thread):
         self.x = x
         self.y = y
         self.ocupado = ocupado
-        
+        self.candado = threading.Lock()    
+            
     def __str__(self):
-        return f"Taxi {self.id} cuya matricula es: {self.matricula}, esta en {self.x}, {self.y}"
-    
+        return f"Taxi {self.id} cuya matricula es: {self.matricula}, esta en {self.x}, {self.y} y se dirige a recoger a un cliente"
     
     def run(self):
         while True:
@@ -22,3 +22,14 @@ class Taxi(threading.Thread):
             else:
                 print(f"Taxi {self.id} esperando")
             time.sleep(3)
+            
+    def intentar_ocupar(self):
+        self.candado.acquire()
+        try:
+            if self.ocupado == False:
+                self.ocupado = True
+                return True
+            else:
+                return False
+        finally:
+            self.candado.release()
