@@ -11,6 +11,10 @@ if __name__ == "__main__":
     taxi2 = Taxi("02", "3876 JUY", 1000, 1000)
     taxi3 = Taxi("03", "2986 TRQ", 5000, 5000)
     
+    taxi1.start()
+    taxi2.start()
+    taxi3.start()
+    
     empresa.registrar_taxi(taxi1)
     empresa.registrar_taxi(taxi2)
     empresa.registrar_taxi(taxi3)
