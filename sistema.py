@@ -26,7 +26,7 @@ class Sistema:
                 mejor_distancia = distancia_actual
                 
         if taxi_mas_cercano is not None:
-            if taxi_mas_cercano.intentar_ocupar() == True:
+            if taxi_mas_cercano.intentar_ocupar(cliente) == True:
                 print(f"EL taxi: {taxi_mas_cercano.id} esta ocupado")        
                 return taxi_mas_cercano
             else:

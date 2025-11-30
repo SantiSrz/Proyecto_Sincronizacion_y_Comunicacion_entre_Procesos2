@@ -3,7 +3,7 @@ import time
 
 class Taxi(threading.Thread):
     
-    def __init__(self, id, matricula, x, y, ocupado = False):
+    def __init__(self, id, matricula, x, y, cliente_actual, ocupado = False):
         super().__init__()
         self.id = id
         self.matricula = matricula
@@ -11,6 +11,7 @@ class Taxi(threading.Thread):
         self.y = y
         self.ocupado = ocupado
         self.candado = threading.Lock()    
+        self.cliente_actual = None
             
     def __str__(self):
         return f"Taxi {self.id} cuya matricula es: {self.matricula}, esta en {self.x}, {self.y} y se dirige a recoger a un cliente"
@@ -18,16 +19,29 @@ class Taxi(threading.Thread):
     def run(self):
         while True:
             if self.ocupado == True:
-                print(f"Taxi {self.id} en camino")
+                print(f"Taxi {self.id} yendo a recoger a {self.cliente_actual.id}")
+                time.sleep(3)
+                print(f"Cliente {self.cliente_actual.id} ya recogido por el taxi {self.id}")
+                time.sleep(3)
+                print(f"Cliente {self.cliente_actual.id} ha sido entregado en su destino por el taxi {self.id}")
+                self.candado.acquire() 
+                try:
+                    self.ocupado = False
+                    self.cliente_actual = None
+                    print(f"Taxi {self.id} vuelve a estar libre.")
+                finally:
+                    self.candado.release()
+                    
             else:
-                print(f"Taxi {self.id} esperando")
-            time.sleep(3)
+                print(f"Taxi {self.id} esperando a un cliente en [{self.x}, {self.y}]")
+                time.sleep(3)
             
-    def intentar_ocupar(self):
+    def intentar_ocupar(self, cliente):
         self.candado.acquire()
         try:
             if self.ocupado == False:
                 self.ocupado = True
+                self.cliente_actual = cliente
                 return True
             else:
                 return False
