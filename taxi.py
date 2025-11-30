@@ -3,7 +3,7 @@ import time
 
 class Taxi(threading.Thread):
     
-    def __init__(self, id, matricula, x, y, cliente_actual, ocupado = False):
+    def __init__(self, id, matricula, x, y, ocupado = False):
         super().__init__()
         self.id = id
         self.matricula = matricula
@@ -26,6 +26,8 @@ class Taxi(threading.Thread):
                 print(f"Cliente {self.cliente_actual.id} ha sido entregado en su destino por el taxi {self.id}")
                 self.candado.acquire() 
                 try:
+                    self.x = self.cliente_actual.x_destino
+                    self.y = self.cliente_actual.y_destino
                     self.ocupado = False
                     self.cliente_actual = None
                     print(f"Taxi {self.id} vuelve a estar libre.")

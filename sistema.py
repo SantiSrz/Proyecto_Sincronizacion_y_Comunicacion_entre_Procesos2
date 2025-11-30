@@ -27,9 +27,7 @@ class Sistema:
                 
         if taxi_mas_cercano is not None:
             if taxi_mas_cercano.intentar_ocupar(cliente) == True:
-                print(f"EL taxi: {taxi_mas_cercano.id} esta ocupado")        
                 return taxi_mas_cercano
             else:
-                print("Te acaban de quitar el taxi, ahora mismo te asignaremos otro")
                 return None
             
