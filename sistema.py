@@ -36,5 +36,5 @@ class Sistema:
             if t.recaudado > 0:
                 comision = t.recaudado * 0.20
                 pago_taxista = t.recaudado * 0.80
-                print(f"Todo lo que ha recaudado el taxi {self.t.id}: {self.recaudado}. UNIETAXI se lleva: {comision} y taxista: {pago_taxista}")
+                print(f"Todo lo que ha recaudado el taxi {t.id}: {t.recaudado}. UNIETAXI se lleva: {comision} y taxista: {pago_taxista}")
                 t.recaudado = 0

@@ -32,6 +32,6 @@ if __name__ == "__main__":
     cliente1.start()
     cliente2.start()
     
-    time.sleep(6)
+    time.sleep(20)
     
     empresa.cierre_contable()
