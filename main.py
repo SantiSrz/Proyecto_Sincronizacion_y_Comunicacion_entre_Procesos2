@@ -1,3 +1,4 @@
+import time
 from cliente import Cliente
 from taxi import Taxi
 from sistema import Sistema
@@ -25,14 +26,12 @@ if __name__ == "__main__":
     empresa.registrar_taxi(taxi4)
     empresa.registrar_taxi(taxi5)
 
-    cliente1 = Cliente("Santiago", 500, 700, 200, 400)
-    cliente2 = Cliente("Pedro", 600, 200, 500, 900)
-
-    empresa.registrar_clientes(cliente1)
-    empresa.registrar_clientes(cliente2)
-
-    taxi_ganador1 = empresa.asignar_taxi(cliente1)
-    print(taxi_ganador1)
+    cliente1 = Cliente("Santiago", 500, 700, 200, 400, empresa)
+    cliente2 = Cliente("Pedro", 600, 200, 500, 900, empresa)
     
-    taxi_ganador2 = empresa.asignar_taxi(cliente2)
-    print(taxi_ganador2)
+    cliente1.start()
+    cliente2.start()
+    
+    time.sleep(6)
+    
+    empresa.cierre_contable()
