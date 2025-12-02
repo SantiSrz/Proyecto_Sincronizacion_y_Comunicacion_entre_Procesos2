@@ -1,10 +1,12 @@
 import math
+import random
 
 class Sistema:
 
     def __init__(self):
         self.taxis = []
         self.clientes = []
+        self.historial_de_registros = []
 
     def registrar_taxi(self, taxi):
         self.taxis.append(taxi)
@@ -38,3 +40,21 @@ class Sistema:
                 pago_taxista = t.recaudado * 0.80
                 print(f"Todo lo que ha recaudado el taxi {t.id}: {t.recaudado}. UNIETAXI se lleva: {comision} y taxista: {pago_taxista}")
                 t.recaudado = 0
+                
+    def almacenar_viaje(self, taxi_id, cliente_id, precio):
+        datos = {"Taxi":taxi_id,
+                 "Cliente":cliente_id,
+                 "Precio":precio}
+        self.historial_de_registros.append(datos)
+        
+    def reporte_calidad(self):
+        total_viajes = len(self.historial_de_registros)
+        if total_viajes > 0:
+            cantidad_a_revisar = min(5, total_viajes)
+            auditoria_random = random.sample(self.historial_de_registros, cantidad_a_revisar)
+            for viaje in auditoria_random: 
+                print(f"Auditorias de hoy:")
+                print(viaje)
+        else:
+            print("No hay viajes para auditorias hoy.")
+            return
