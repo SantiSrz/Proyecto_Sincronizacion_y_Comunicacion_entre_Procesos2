@@ -15,6 +15,7 @@ class Taxi(threading.Thread):
         self.cliente_actual = None
         self.recaudado = 0
         self.empresa = empresa
+        self.antecedentes_penales = False
             
     def __str__(self):
         return f"Taxi {self.id} cuya matricula es: {self.matricula}, esta en {self.x}, {self.y} y se dirige a recoger a un cliente"

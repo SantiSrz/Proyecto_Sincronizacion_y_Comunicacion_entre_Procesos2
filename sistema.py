@@ -9,7 +9,11 @@ class Sistema:
         self.historial_de_registros = []
 
     def registrar_taxi(self, taxi):
-        self.taxis.append(taxi)
+        if self.taxi_antecedentes == False:
+            self.taxis.append(taxi)
+        else:
+            print(f"El taxista {taxi.id} no puede trabajar aqui debido a sus antecedentes penales")
+            self.escribir_log(f"El taxista {taxi.id} no ha sido rechazado debido a sus antecedentes penales")
         
     def registrar_clientes(self, cliente):
         self.clientes.append(cliente)
@@ -38,13 +42,15 @@ class Sistema:
             if t.recaudado > 0:
                 comision = t.recaudado * 0.20
                 pago_taxista = t.recaudado * 0.80
-                print(f"Todo lo que ha recaudado el taxi {t.id}: {t.recaudado}. UNIETAXI se lleva: {comision} y taxista: {pago_taxista}")
+                print(f"Todo lo que ha recaudado el taxi {t.id}: {t.recaudado}. UNIETAXI se lleva: {comision:.2f} y taxista: {pago_taxista:.2f}")
+                self.escribir_log(f"Todo lo que ha recaudado el taxi {t.id}: {t.recaudado}. UNIETAXI se lleva: {comision:.2f} y taxista: {pago_taxista:.2f}")
                 t.recaudado = 0
                 
     def almacenar_viaje(self, taxi_id, cliente_id, precio):
         datos = {"Taxi":taxi_id,
                  "Cliente":cliente_id,
-                 "Precio":precio}
+                 "Precio":f"{precio:.2f}"}
+        self.escribir_log(f"El taxi {taxi_id}, llevo al cliente {cliente_id} por {precio:.2f} euros")
         self.historial_de_registros.append(datos)
         
     def reporte_calidad(self):
@@ -58,3 +64,7 @@ class Sistema:
         else:
             print("No hay viajes para auditorias hoy.")
             return
+        
+    def escribir_log(self, mensaje):
+        with open("bitacora.txt", "a") as archivo:
+            archivo.write(mensaje + "\n")
