@@ -14,6 +14,7 @@ class Sistema:
         else:
             print(f"El taxista {taxi.id} no puede trabajar aqui debido a sus antecedentes penales")
             self.escribir_log(f"El taxista {taxi.id} ha sido rechazado debido a sus antecedentes penales")
+            taxi.detener_servicio()
         
     def registrar_clientes(self, cliente):
         self.clientes.append(cliente)
@@ -66,5 +67,5 @@ class Sistema:
             return
         
     def escribir_log(self, mensaje):
-        with open("bitacora.txt", "a") as archivo:
+        with open("Datos.txt", "a") as archivo:
             archivo.write(mensaje + "\n")

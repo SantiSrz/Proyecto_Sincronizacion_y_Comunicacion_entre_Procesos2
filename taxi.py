@@ -4,7 +4,7 @@ import math
 
 class Taxi(threading.Thread):
     
-    def __init__(self, id, matricula, x, y, empresa):
+    def __init__(self, id, matricula, x, y, empresa, antecedentes_penales = False, en_servicio = True):
         super().__init__()
         self.id = id
         self.matricula = matricula
@@ -15,14 +15,15 @@ class Taxi(threading.Thread):
         self.cliente_actual = None
         self.recaudado = 0
         self.empresa = empresa
-        self.antecedentes_penales = False
+        self.antecedentes_penales = antecedentes_penales
+        self.en_servicio = en_servicio
             
     def __str__(self):
         return f"Taxi {self.id} cuya matricula es: {self.matricula}, esta en {self.x}, {self.y} y se dirige a recoger a un cliente"
     
     def run(self):
-        while True:
-            if self.ocupado == True:
+        while self.en_servicio:
+            if (self.ocupado == True):
                 print(f"Taxi {self.id} yendo a recoger a {self.cliente_actual.id}")
                 time.sleep(3)
                 print(f"Cliente {self.cliente_actual.id} ya recogido por el taxi {self.id}")
@@ -46,6 +47,9 @@ class Taxi(threading.Thread):
             else:
                 print(f"Taxi {self.id} esperando a un cliente en [{self.x}, {self.y}]")
                 time.sleep(3)
+    
+    def detener_servicio(self):
+        self.en_servicio = False
             
     def intentar_ocupar(self, cliente):
         self.candado.acquire()
