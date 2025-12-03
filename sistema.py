@@ -41,10 +41,10 @@ class Sistema:
     def cierre_contable(self):
         for t in self.taxis:
             if t.recaudado > 0:
-                comision = t.recaudado * 0.20
+                comision = (t.recaudado * 0.20)
                 pago_taxista = t.recaudado * 0.80
-                print(f"Todo lo que ha recaudado el taxi {t.id}: {t.recaudado}. UNIETAXI se lleva: {comision:.2f} y taxista: {pago_taxista:.2f}")
-                self.escribir_log(f"Todo lo que ha recaudado el taxi {t.id}: {t.recaudado}. UNIETAXI se lleva: {comision:.2f} y taxista: {pago_taxista:.2f}")
+                print(f"Todo lo que ha recaudado el taxi {t.id}: {t.recaudado:.2f}. UNIETAXI se lleva: {comision:.2f} y taxista: {pago_taxista:.2f}")
+                self.escribir_log(f"Todo lo que ha recaudado el taxi {t.id}: {t.recaudado:.2f}. UNIETAXI se lleva: {comision:.2f} y taxista: {pago_taxista:.2f}")
                 t.recaudado = 0
                 
     def almacenar_viaje(self, taxi_id, cliente_id, precio):
