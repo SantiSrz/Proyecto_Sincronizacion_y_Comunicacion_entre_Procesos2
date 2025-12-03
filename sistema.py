@@ -9,11 +9,11 @@ class Sistema:
         self.historial_de_registros = []
 
     def registrar_taxi(self, taxi):
-        if self.taxi_antecedentes == False:
+        if taxi.antecedentes_penales == False:
             self.taxis.append(taxi)
         else:
             print(f"El taxista {taxi.id} no puede trabajar aqui debido a sus antecedentes penales")
-            self.escribir_log(f"El taxista {taxi.id} no ha sido rechazado debido a sus antecedentes penales")
+            self.escribir_log(f"El taxista {taxi.id} ha sido rechazado debido a sus antecedentes penales")
         
     def registrar_clientes(self, cliente):
         self.clientes.append(cliente)
