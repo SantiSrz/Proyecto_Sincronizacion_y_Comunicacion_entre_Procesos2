@@ -54,6 +54,7 @@ class Sistema:
             return None
             
     def cierre_contable(self):
+        print(f"\n")
         for t in self.taxis:
             if t.recaudado > 0:
                 comision = (t.recaudado * 0.20)
@@ -75,8 +76,9 @@ class Sistema:
         if total_viajes > 0:
             cantidad_a_revisar = min(5, total_viajes)
             auditoria_random = random.sample(self.historial_de_registros, cantidad_a_revisar)
+            print(f"\n Auditorias de 5 viajes aleatorios de hoy:")
             for viaje in auditoria_random: 
-                print(f"Auditorias de 5 viajes aleatorios de hoy:\n {viaje}")
+                print(f"{viaje}")
 
         else:
             print("No hay viajes para auditorias hoy.")

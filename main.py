@@ -45,12 +45,12 @@ if __name__ == "__main__":
     empresa.registrar_taxi(taxi10)
     empresa.registrar_taxi(taxi11)
 
-    cliente1 = Cliente("Santiago", 500, 709, 200, 420, empresa)
+    cliente1 = Cliente("Santiago", 500, 700, 200, 420, empresa)
     cliente2 = Cliente("Pedro", 600, 200, 530, 940, empresa)
     cliente3 = Cliente("Marcos", 708, 100, 870, 900, empresa)
     cliente4 = Cliente("Maria", 1000, 1200, 1500, 1900, empresa)
     cliente5 = Cliente("Lucia", 1400, 200, 650, 780, empresa)
-    cliente6 = Cliente("Lucas", 669, 1250, 1523, 1956, empresa)
+    cliente6 = Cliente("Lucas", 669, 1250, 1520, 1950, empresa)
     cliente7 = Cliente("Ana", 120, 300, 500, 600, empresa)
     cliente8 = Cliente("Raul", 2200, 150, 1000, 1000, empresa)
     cliente9 = Cliente("Sofia", 800, 900, 100, 200, empresa)
@@ -75,6 +75,8 @@ if __name__ == "__main__":
     cliente28 = Cliente("Ricardo", 50, 1900, 850, 850, empresa)
     cliente29 = Cliente("Rosa", 2100, 2100, 100, 100, empresa)
     cliente30 = Cliente("Miguel", 1000, 500, 2000, 1000, empresa)
+    cliente31 = Cliente("Elena", 300, 1800, 900, 900, empresa)
+    cliente32 = Cliente("Beatriz", 100, 100, 2000, 2000, empresa)
 
     empresa.registrar_clientes(cliente1)
     empresa.registrar_clientes(cliente2)
@@ -106,11 +108,13 @@ if __name__ == "__main__":
     empresa.registrar_clientes(cliente28)
     empresa.registrar_clientes(cliente29)
     empresa.registrar_clientes(cliente30)
+    empresa.registrar_clientes(cliente31)
+    empresa.registrar_clientes(cliente32)
 
-    clientes_pendientes = [cliente1, cliente2, cliente3, cliente4, cliente5, cliente6, cliente7, cliente8, cliente9, cliente10, cliente11, cliente12, cliente13, cliente14, cliente15, cliente16, cliente17, cliente18, cliente19, cliente20, cliente21, cliente22, cliente23, cliente24, cliente25, cliente26, cliente27, cliente28, cliente29, cliente30]
+    clientes_pendientes = [cliente1, cliente2, cliente3, cliente4, cliente5, cliente6, cliente7, cliente8, cliente9, cliente10, cliente11, cliente12, cliente13, cliente14, cliente15, cliente16, cliente17, cliente18, cliente19, cliente20, cliente21, cliente22, cliente23, cliente24, cliente25, cliente26, cliente27, cliente28, cliente29, cliente30, cliente31, cliente32]
     
     for hora in range(6, 25):
-        print(f"Son las {hora}:00")
+        print(f"\nSon las {hora}:00")
         cantidad_a_sacar = min(2, len(clientes_pendientes))
         if cantidad_a_sacar > 0:
             elegidos = random.sample(clientes_pendientes, cantidad_a_sacar)
@@ -129,4 +133,4 @@ if __name__ == "__main__":
     for t in empresa.taxis:
         t.join()
         
-    print("El programa ha terminado por hoy")
+    print("\nEl programa ha terminado por hoy\n")
