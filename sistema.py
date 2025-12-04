@@ -25,18 +25,33 @@ class Sistema:
     def asignar_taxi(self, cliente):
         mejor_distancia = 2000
         taxi_mas_cercano = None
+        mejor_calificacion = -1
         
         for t in self.taxis:
+            if t.conteo_viajes == 0:
+                media_actual = 0
+            else:
+                media_actual = t.total_estrellas / t.conteo_viajes
+            
             distancia_actual = self.calcular_distancia(t.x, t.y, cliente.x_origen, cliente.y_origen)
+            
             if (distancia_actual < mejor_distancia) and (t.ocupado == False):
                 taxi_mas_cercano = t  
                 mejor_distancia = distancia_actual
-                
+                mejor_calificacion = media_actual
+            
+            elif (distancia_actual == mejor_distancia) and (t.ocupado == False):
+                if media_actual > mejor_calificacion:
+                    taxi_mas_cercano = t
+                    mejor_calificacion = media_actual
+                    
         if taxi_mas_cercano is not None:
             if taxi_mas_cercano.intentar_ocupar(cliente) == True:
                 return taxi_mas_cercano
             else:
                 return None
+        else:
+            return None
             
     def cierre_contable(self):
         for t in self.taxis:
@@ -47,11 +62,12 @@ class Sistema:
                 self.escribir_log(f"Todo lo que ha recaudado el taxi {t.id}: {t.recaudado:.2f}. UNIETAXI se lleva: {comision:.2f} y taxista: {pago_taxista:.2f}")
                 t.recaudado = 0
                 
-    def almacenar_viaje(self, taxi_id, cliente_id, precio):
+    def almacenar_viaje(self, taxi_id, cliente_id, precio, media):
         datos = {"Taxi":taxi_id,
                  "Cliente":cliente_id,
-                 "Precio":f"{precio:.2f}"}
-        self.escribir_log(f"El taxi {taxi_id}, llevo al cliente {cliente_id} por {precio:.2f} euros")
+                 "Precio":f"{precio:.2f}",
+                 "Media de califiacion:":f"{media:.2f}"}
+        self.escribir_log(f"El taxi {taxi_id}, llevo al cliente {cliente_id} por {precio:.2f} euros. Calificacion media del taxista: {media:.2f} estrellas")
         self.historial_de_registros.append(datos)
         
     def reporte_calidad(self):
