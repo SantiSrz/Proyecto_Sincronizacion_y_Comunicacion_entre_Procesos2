@@ -1,8 +1,12 @@
 El taxista 010 ha sido rechazado debido a sus antecedentes penales
 El taxista 011 ha sido rechazado debido a sus antecedentes penales
-El taxi 04, llevo al cliente Lucas por 554.02 euros. Calificacion media del taxista: 1.00 estrellas
-El taxi 05, llevo al cliente Lucia por 474.05 euros. Calificacion media del taxista: 4.00 estrellas
-El taxi 03, llevo al cliente Marcos por 408.12 euros. Calificacion media del taxista: 1.00 estrellas
-El taxi 06, llevo al cliente Maria por 430.12 euros. Calificacion media del taxista: 5.00 estrellas
-El taxi 02, llevo al cliente Pedro por 371.65 euros. Calificacion media del taxista: 5.00 estrellas
-El taxi 05, llevo al cliente Santiago por 208.28 euros. Calificacion media del taxista: 2.50 estrellas
+El taxi 04, llevo al cliente Lucia por 474.05 euros. Calificacion media del taxista: 2.00 estrellas
+El taxi 03, llevo al cliente Pedro por 371.65 euros. Calificacion media del taxista: 4.00 estrellas
+El taxi 02, llevo al cliente Marcos por 408.12 euros. Calificacion media del taxista: 2.00 estrellas
+El taxi 05, llevo al cliente Maria por 430.12 euros. Calificacion media del taxista: 5.00 estrellas
+El taxi 04, llevo al cliente Santiago por 208.28 euros. Calificacion media del taxista: 2.50 estrellas
+El taxi 03, llevo al cliente Lucas por 554.02 euros. Calificacion media del taxista: 2.50 estrellas
+Todo lo que ha recaudado el taxi 02: 408.12. UNIETAXI se lleva: 81.62 y taxista: 326.50
+Todo lo que ha recaudado el taxi 03: 925.67. UNIETAXI se lleva: 185.13 y taxista: 740.54
+Todo lo que ha recaudado el taxi 04: 682.33. UNIETAXI se lleva: 136.47 y taxista: 545.86
+Todo lo que ha recaudado el taxi 05: 430.12. UNIETAXI se lleva: 86.02 y taxista: 344.09

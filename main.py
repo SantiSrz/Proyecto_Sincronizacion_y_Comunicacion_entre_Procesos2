@@ -51,16 +51,6 @@ if __name__ == "__main__":
     cliente4 = Cliente("Maria", 1000, 1200, 1500, 1900, empresa)
     cliente5 = Cliente("Lucia", 1400, 200, 650, 780, empresa)
     cliente6 = Cliente("Lucas", 669, 1250, 1523, 1956, empresa)
-
-    clientes_pendientes = [cliente1, cliente2, cliente3, cliente4, cliente5, cliente6]
-    
-    for hora in range(6, 25):
-        print(f"Son las {hora}:00")
-        if len(clientes_pendientes) > 0:
-            cliente_elegido = random.choice(clientes_pendientes)
-            cliente_elegido.start()
-            clientes_pendientes.remove(cliente_elegido)
-        time.sleep(1)
     
     empresa.registrar_clientes(cliente1)
     empresa.registrar_clientes(cliente2)
@@ -68,9 +58,18 @@ if __name__ == "__main__":
     empresa.registrar_clientes(cliente4)
     empresa.registrar_clientes(cliente5)
     empresa.registrar_clientes(cliente6)
+
+    clientes_pendientes = [cliente1, cliente2, cliente3, cliente4, cliente5, cliente6]
     
-    time.sleep(25)
-    
+    for hora in range(6, 25):
+        print(f"Son las {hora}:00")
+        if len(clientes_pendientes) > 0:
+            cliente_elegido = random.choice(clientes_pendientes)
+            print(f"- Ha aparecido un nuevo cliente: {cliente_elegido.id}")
+            cliente_elegido.start()
+            clientes_pendientes.remove(cliente_elegido)
+        time.sleep(1)
+        
     empresa.cierre_contable()
     empresa.reporte_calidad()
     
