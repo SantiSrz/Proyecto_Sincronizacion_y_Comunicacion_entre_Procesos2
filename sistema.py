@@ -76,7 +76,7 @@ class Sistema:
         if total_viajes > 0:
             cantidad_a_revisar = min(5, total_viajes)
             auditoria_random = random.sample(self.historial_de_registros, cantidad_a_revisar)
-            print(f"\n Auditorias de 5 viajes aleatorios de hoy:")
+            print(f"\nAuditorias de 5 viajes aleatorios de hoy:")
             for viaje in auditoria_random: 
                 print(f"{viaje}")
 
