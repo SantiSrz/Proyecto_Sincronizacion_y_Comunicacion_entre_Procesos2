@@ -5,14 +5,14 @@ import random
 
 class Taxi(threading.Thread):
     
-    def __init__(self, id, matricula, x, y, empresa, candado = threading.Lock(), ocupado = False, cliente_actual = None, recaudado = 0, total_estrellas = 0, conteo_viajes = 0, antecedentes_penales = False, en_servicio = True):
+    def __init__(self, id, matricula, x, y, empresa, ocupado = False, cliente_actual = None, recaudado = 0, total_estrellas = 0, conteo_viajes = 0, antecedentes_penales = False, en_servicio = True):
         super().__init__()
         self.id = id
         self.matricula = matricula
         self.x = x
         self.y = y
         self.ocupado = ocupado
-        self.candado = candado   
+        self.candado = threading.Lock() 
         self.cliente_actual = cliente_actual
         self.recaudado = recaudado
         self.empresa = empresa
@@ -28,9 +28,9 @@ class Taxi(threading.Thread):
         while self.en_servicio:
             if (self.ocupado == True):
                 print(f"Taxi {self.id} yendo a recoger a {self.cliente_actual.id}")
-                time.sleep(3)
+                time.sleep(1)
                 print(f"Cliente {self.cliente_actual.id} ya recogido por el taxi {self.id}")
-                time.sleep(3)
+                time.sleep(1)
                 distancia_recorrida = math.sqrt((self.cliente_actual.x_destino - self.cliente_actual.x_origen)**2 + (self.cliente_actual.y_destino - self.cliente_actual.y_origen)**2)
                 precio = distancia_recorrida * 0.5
                 self.recaudado += precio
@@ -53,7 +53,7 @@ class Taxi(threading.Thread):
                     
             else:
                 print(f"Taxi {self.id} esperando a un cliente en [{self.x}, {self.y}]")
-                time.sleep(3)
+                time.sleep(1)
     
     def detener_servicio(self):
         self.en_servicio = False

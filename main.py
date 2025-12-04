@@ -1,4 +1,5 @@
 import time
+import random
 from cliente import Cliente
 from taxi import Taxi
 from sistema import Sistema
@@ -50,15 +51,33 @@ if __name__ == "__main__":
     cliente4 = Cliente("Maria", 1000, 1200, 1500, 1900, empresa)
     cliente5 = Cliente("Lucia", 1400, 200, 650, 780, empresa)
     cliente6 = Cliente("Lucas", 669, 1250, 1523, 1956, empresa)
+
+    clientes_pendientes = [cliente1, cliente2, cliente3, cliente4, cliente5, cliente6]
     
-    cliente1.start()
-    cliente2.start()
-    cliente3.start()
-    cliente4.start()
-    cliente5.start()
-    cliente6.start()
+    for hora in range(6, 25):
+        print(f"Son las {hora}:00")
+        if len(clientes_pendientes) > 0:
+            cliente_elegido = random.choice(clientes_pendientes)
+            cliente_elegido.start()
+            clientes_pendientes.remove(cliente_elegido)
+        time.sleep(1)
     
-    time.sleep(20)
+    empresa.registrar_clientes(cliente1)
+    empresa.registrar_clientes(cliente2)
+    empresa.registrar_clientes(cliente3)
+    empresa.registrar_clientes(cliente4)
+    empresa.registrar_clientes(cliente5)
+    empresa.registrar_clientes(cliente6)
+    
+    time.sleep(25)
     
     empresa.cierre_contable()
     empresa.reporte_calidad()
+    
+    for t in empresa.taxis:
+        t.detener_servicio()
+
+    for t in empresa.taxis:
+        t.join()
+        
+    print("El programa ha terminado por hoy")

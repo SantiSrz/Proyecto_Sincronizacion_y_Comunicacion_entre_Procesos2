@@ -17,5 +17,5 @@ class Cliente(threading.Thread):
         return f"Cliente {self.id} de origen: {self.x_origen}, {self.y_origen} quiere ir a {self.x_destino}, {self.y_destino}"
 
     def run(self):
-        time.sleep(3)
+        time.sleep(1)
         self.empresa.asignar_taxi(self)
