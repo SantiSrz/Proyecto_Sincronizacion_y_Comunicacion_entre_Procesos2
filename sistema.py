@@ -76,8 +76,8 @@ class Sistema:
             cantidad_a_revisar = min(5, total_viajes)
             auditoria_random = random.sample(self.historial_de_registros, cantidad_a_revisar)
             for viaje in auditoria_random: 
-                print(f"Auditorias de hoy:")
-                print(viaje)
+                print(f"Auditorias de 5 viajes aleatorios de hoy:\n {viaje}")
+
         else:
             print("No hay viajes para auditorias hoy.")
             return

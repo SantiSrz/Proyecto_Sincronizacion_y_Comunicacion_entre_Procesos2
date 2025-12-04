@@ -32,7 +32,7 @@ class Taxi(threading.Thread):
                 print(f"Cliente {self.cliente_actual.id} ya recogido por el taxi {self.id}")
                 time.sleep(1)
                 distancia_recorrida = math.sqrt((self.cliente_actual.x_destino - self.cliente_actual.x_origen)**2 + (self.cliente_actual.y_destino - self.cliente_actual.y_origen)**2)
-                precio = distancia_recorrida * 0.5
+                precio = distancia_recorrida * 0.1
                 self.recaudado += precio
                 nota = random.randint(1, 5)
                 self.total_estrellas += nota
