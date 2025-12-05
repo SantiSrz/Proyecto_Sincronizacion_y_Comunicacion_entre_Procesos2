@@ -1,4 +1,4 @@
-import time
+import time 
 import random
 from cliente import Cliente
 from taxi import Taxi
