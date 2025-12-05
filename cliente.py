@@ -1,6 +1,6 @@
 import threading # importo la libreria threading para trabajar con hilos
 
-# creo un clase llamada clientes que hereda de threading.Thread para que actue como un hilo
+# creo un clase llamada Clientes que hereda de threading.Thread para que actue como un hilo
 class Cliente(threading.Thread):
 
     # creo un metodo __init__ que sirve como un constructor donde prepara este nuevo cliente
