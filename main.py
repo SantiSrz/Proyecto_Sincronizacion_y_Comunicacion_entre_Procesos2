@@ -82,6 +82,10 @@ if __name__ == "__main__":
     cliente30 = Cliente("Miguel", 1000, 500, 2000, 1000, empresa)
     cliente31 = Cliente("Elena", 300, 1800, 900, 900, empresa)
     cliente32 = Cliente("Beatriz", 100, 100, 2000, 2000, empresa)
+    cliente33 = Cliente("Javier", 450, 450, 1800, 1800, empresa)
+    cliente34 = Cliente("Ines", 1100, 200, 300, 1500, empresa)
+    cliente35 = Cliente("Carlos", 50, 1950, 1000, 100, empresa)
+    cliente36 = Cliente("Veronica", 1600, 800, 600, 1300, empresa)
     
     # registro los clientes en una lista
     empresa.registrar_clientes(cliente1)
@@ -116,12 +120,16 @@ if __name__ == "__main__":
     empresa.registrar_clientes(cliente30)
     empresa.registrar_clientes(cliente31)
     empresa.registrar_clientes(cliente32)
+    empresa.registrar_clientes(cliente33)
+    empresa.registrar_clientes(cliente34)
+    empresa.registrar_clientes(cliente35)
+    empresa.registrar_clientes(cliente36)
 
     # creo otra lista con los clientes para que una vez ya haya cumplido su viaje no vuelvan a aparecer
-    clientes_pendientes = [cliente1, cliente2, cliente3, cliente4, cliente5, cliente6, cliente7, cliente8, cliente9, cliente10, cliente11, cliente12, cliente13, cliente14, cliente15, cliente16, cliente17, cliente18, cliente19, cliente20, cliente21, cliente22, cliente23, cliente24, cliente25, cliente26, cliente27, cliente28, cliente29, cliente30, cliente31, cliente32]
+    clientes_pendientes = [cliente1, cliente2, cliente3, cliente4, cliente5, cliente6, cliente7, cliente8, cliente9, cliente10, cliente11, cliente12, cliente13, cliente14, cliente15, cliente16, cliente17, cliente18, cliente19, cliente20, cliente21, cliente22, cliente23, cliente24, cliente25, cliente26, cliente27, cliente28, cliente29, cliente30, cliente31, cliente32, cliente33, cliente34, cliente35, cliente36]
     
     # hago un bucle for para simular las horas de trabajo que van desde las 6am hasta las 12 de la noche
-    for hora in range(6, 25):
+    for hora in range(6, 24):
         print(f"\nSon las {hora}:00")
         cantidad_a_sacar = min(2, len(clientes_pendientes)) # aqui lo que se hace es ir cogiendo de dos en dos hasta que haya menos de dos, que se cogera el mas pequeño debido a la funcion min()
         if cantidad_a_sacar > 0:
@@ -130,8 +138,9 @@ if __name__ == "__main__":
                 print(f"- Ha aparecido un nuevo cliente:  {c.id}") # este for hace que aparezca en la consola el cliente seleccionado y lo inicialice, una vez terminado lo quita de la lista para que no se repita
                 c.start()
                 clientes_pendientes.remove(c)           
-        time.sleep(1) # el sistema duerme por 1 segundo, hay que poner esto para que no se impriman todos a la vez
-     
+        time.sleep(3) # el sistema duerme por 1 segundo, hay que poner esto para que no se impriman todos a la vez
+    print(f"\nSon las 00:00, el trabajo ha terminado por hoy, los taxistas se retiraran")
+    
     empresa.cierre_contable() # se llama a la funcion cierre_contable() una vez ha acabado el dia para poner un resumen de cuanto ha facturado cada taxista
     empresa.reporte_calidad() # se llama a la funcion reporte_calidad() una vez ha acabado el dia para elegir 5 viajes realizados en ese dia aleatoriamente y enseñar los datos de ese mismo viaje
     

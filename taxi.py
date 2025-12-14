@@ -62,7 +62,7 @@ class Taxi(threading.Thread):
             # este else hace que si no esta con ningun cliente, simplemente espere        
             else:
                 print(f"Taxi {self.id} esperando a un cliente en [{self.x}, {self.y}]")
-                time.sleep(1)
+                time.sleep(3)
     
     # cuando se llame a esta funcion la variable en_servicio sera False y el While del run se detendra poniendo fin al servicio
     def detener_servicio(self):
